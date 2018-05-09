@@ -1,0 +1,8 @@
+<div *ngFor=""></div>
+
+<form action="POST" (ngSubmit)="onSubmit(2, 2)">
+  <input type="text" [(ngModel)]="heroForm.name" name="name">
+  <input type="text" [(ngModel)]="heroForm.id" name="id">
+  <h1>{{ heroForm.name | uppercase }} {{ heroForm.id }}</h1>
+  <button>Submit</button>
+</form>
