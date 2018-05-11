@@ -6,6 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/getHeroes', (req, res) => {
+    console.log('Request Made');
  let heroes = [
      { id: 1, name: 'Batman', home: 'Gotham' },
      { id: 2, name: 'Superman', home: 'Metropolis' },

@@ -1,3 +1,8 @@
 <h1>{{ hero.name }}</h1>
 <p>Lives in {{ hero.home }}</p>
 <p>Is user number {{ hero.id }}</p>
+<a (click)="toggleInput()">Edit</a>
+<form (ngSubmit)="editHero('name')">
+    <input type="text" name="Edit" [(ngModel)]="newValue" [hidden]="!isVisible">
+    <button>Update</button>
+</form>

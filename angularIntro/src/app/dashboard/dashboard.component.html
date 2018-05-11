@@ -1,4 +1,17 @@
-<div *ngFor="let hero of heroes">
-  <h1>{{hero.name}}</h1>
-  <a routerLink="/detail/{{hero.id}}">View More</a>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let hero of heroes" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <h1>{{hero.name}}</h1>
+      <a routerLink="/detail/{{hero.id}}" class="btn btn-primary">View More</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <form action="POST" (ngSubmit)="addHero()">
+    <input type="text" name="Name" placeholder="Name" [(ngModel)]="newHero.name">
+    <input type="number" name="Id" placeholder="Id" [(ngModel)]="newHero.id">
+    <input type="text" name="Home" placeholder="Home" [(ngModel)]="newHero.home">
+    <button class="btn btn-success">Add</button>
+  </form>
 </div>
