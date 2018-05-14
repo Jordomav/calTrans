@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 // import { HeroClass } from '../hero';
 
 import { HeroService } from '../hero.service';
+import { HeroClass } from '../hero';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,21 @@ import { HeroService } from '../hero.service';
 })
 export class DashboardComponent implements OnInit {
 
-  heroes = this.heroService.heroes;
-  newHero = this.heroService.newHero;
-  addHero = this.heroService.addHero(); 
+  // heroes = this.heroService.heroes;
+  // newHero = this.heroService.newHero;
+  // addHero = this.heroService.addHero();
+
+  heroes: HeroClass[];
+  
+  newHero = {
+    id: null,
+    name: '',
+    home: ''
+  };
+
+  addHero() {
+    this.heroes.push(this.newHero);
+  }
 
   constructor(private http: HttpClient, private heroService: HeroService) { }
 
@@ -27,7 +40,8 @@ export class DashboardComponent implements OnInit {
   // }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    // this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   ngOnInit() {

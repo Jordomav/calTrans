@@ -6,6 +6,15 @@
         <li>
             <a routerLink="/dashboard">Dashboard</a>
         </li>
+        <li>
+            <a routerLink="/todo">TODO</a>
+        </li>
+        <li *ngIf="!checkUser()">
+            <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="checkUser()">
+            <a routerLink="/user/{{user.id}}">Profile</a>
+        </li>
     </ul>
 </nav>
 <router-outlet></router-outlet>

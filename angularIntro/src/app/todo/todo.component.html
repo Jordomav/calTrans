@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+<ul class="list-group" *ngFor="let todo of todos">
+    <li class="list-group-item" [ngClass]="{'completed': todo.status}">{{todo.task}} <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button><button class="btn btn-success" (click)="toggleComplete(todo.id)"><span *ngIf="!todo.status">Complete</span><span *ngIf="todo.status">Un-Colmplete</span></button></li>
+</ul>
+
+<form action="POST" (ngSubmit)="addTodo()">
+    <div class="form-group">
+        <label for="newTodo">New Todo</label>
+        <input type="text" class="form-control" id="newTodo" name="task" [(ngModel)]="newTodo.task">
+    </div>
+    <button>Add</button>
+</form>

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { HEROES } from './mock-heroes';
 import { HeroClass } from './hero';
+import { HeroesComponent } from './heroes/heroes.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,20 +12,16 @@ export class HeroService {
 
   heroes: HeroClass[];
 
-  newHero = {
-    id: null,
-    name: '',
-    home: ''
-  };
+  private heroesUrl = 'api/heroes';
 
-  addHero() {
-    this.heroes.push(this.newHero);
+  // getHeroes(): HeroClass[] {
+  //   return HEROES;
+  // }
+
+  getHeroes(): Observable<HeroClass[]> {
+    return this.http.get<HeroClass[]>(this.heroesUrl);
   }
 
-  getHeroes(): HeroClass[] {
-    return HEROES;
-  }
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 }

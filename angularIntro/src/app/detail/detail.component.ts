@@ -18,7 +18,11 @@ export class DetailComponent implements OnInit {
 
   newValue = null;
 
-  tempHero = {};
+  tempHero = {
+    id: null,
+    name: '',
+    home: ''
+  };
 
   isVisible = false;
 
@@ -34,22 +38,22 @@ export class DetailComponent implements OnInit {
     this.isVisible = !this.isVisible;
   }
 
-  editHero(modifier) {
-    if (modifier === 'id') {
-      this.tempHero = this.hero;
-      this.tempHero.id = this.newValue;
-      this.newValue = null;
-    } else if (modifier === 'name') {
-      console.log('here')
-      this.tempHero = this.hero;
-      this.tempHero.name = this.newValue;
-      this.newValue = null;
-    } else if (modifier === 'home') {
-      this.tempHero = this.hero;
-      this.tempHero.home = this.newValue;
-      this.newValue = null;
-    }
-  }
+  // editHero(modifier) {
+  //   if (modifier === 'id') {
+  //     this.tempHero = this.hero;
+  //     this.tempHero.id = this.newValue;
+  //     this.newValue = null;
+  //   } else if (modifier === 'name') {
+  //     console.log('here')
+  //     this.tempHero = this.hero;
+  //     this.tempHero.name = this.newValue;
+  //     this.newValue = null;
+  //   } else if (modifier === 'home') {
+  //     this.tempHero = this.hero;
+  //     this.tempHero.home = this.newValue;
+  //     this.newValue = null;
+  //   }
+  // }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
