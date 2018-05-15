@@ -1,0 +1,17 @@
+<h1>Things Todo:</h1>
+<!-- <input type="text" [(ngModel)]="searchText"> -->
+<ol>
+  <div *ngFor="let list of lists | filter: searchText">
+    <li [ngClass]="{'completed' : list.status}">{{list.task}}</li>
+    <button (click)="deleteTask(list)">Delete</button>
+    <button (click)="toggleComplete(list)">
+      <span *ngIf="!list.status">Complete</span>
+      <span *ngIf="list.status">Un-Complete</span>
+    </button>
+  </div>
+</ol>
+
+<form action="POST" (ngSubmit)="addTodo()">
+  <input type="text" name="task" [(ngModel)]="newTask.task">
+  <button>Add Task</button>
+</form>
